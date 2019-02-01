@@ -712,20 +712,20 @@ ul {
     border-radius: 0px;
     border-top-left-radius: 20%;
     border-bottom-right-radius: 20%;
-    font-size: 2.7vw;
+    font-size: 2.6vw;
   }
   .bubbel3::before{
     display: none;
   }
   .bubbel4 {
     margin-left: 55vw;
-    margin-top: -95vw;
+    margin-top: -96.5vw;
     padding: 1vw;
     width: 32vw; 
     font-size: 2.25vw;
-    height: 13vw;
+    height: 14vw;
     text-align: center;
-    font-size: 2.9vw;
+    font-size: 2.8vw;
   }
   .bubbel4::after{
     display: none;
@@ -744,6 +744,7 @@ ul {
     display: none;
   } 
   .bubbel6 {
+    margin-top: 69.9;
     margin-left: 55vw;
     width: 29vw;
     border-radius: 0px;
