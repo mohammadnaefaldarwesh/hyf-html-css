@@ -39,6 +39,9 @@
       .close {
         background-color: rgb(172, 255, 172);
       }
+      .pink {
+        background-color: rgb(255, 29, 66);
+      }
     </style>
   </head>
   <body>
@@ -92,11 +95,14 @@
       'ftx-token': 0.82301,
       dodo: 0.041555,
       movement: 0.16999,
+      'alpha-finance': 0.027578,
+      velo: 0.095555,
+      jito: 1.4655,
     };
     let finalData;
     let getData = async () => {
       let data = await fetch(
-        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,ftx-token,dodo,movement,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
+        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
       );
       finalData = await data.json();
       console.log(finalData);
@@ -106,7 +112,7 @@
           ((finalData[element].eur - allNames[element]).toPrecision(5) / allNames[element]) *
           100
         ).toFixed(2);
-        let close = percentage <= 2.8;
+        let close = percentage <= 2.8 ? 'buy' : percentage > 2.8 && percentage < 5.1 ? 'pink' : '';
         root.innerHTML += `<div class="row">
                               <div class='${
                                 finalData[element].eur <= allNames[element]
@@ -120,7 +126,7 @@
                               <div class="red">${
                                 finalData[element].eur <= allNames[element] ? 'BUY' : ''
                               }</div>
-                              <div class='${close ? 'buy' : ''}'>${percentage}%</div>
+                              <div class='${close}'>${percentage}%</div>
                            </div>`;
       });
     };
