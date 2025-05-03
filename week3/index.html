@@ -96,7 +96,7 @@
       dodo: 0.041555,
       movement: 0.16999,
       'alpha-finance': 0.027578,
-      velo: 0.095555,
+      velo: 0.009555,
       jito: 1.4655,
     };
     let finalData;
@@ -113,7 +113,8 @@
           100
         ).toFixed(2);
         let close = percentage <= 2.8 ? 'buy' : percentage > 2.8 && percentage < 5.1 ? 'pink' : '';
-        root.innerHTML += `<div class="row">
+        if (close) {
+          root.innerHTML += `<div class="row">
                               <div class='${
                                 finalData[element].eur <= allNames[element]
                                   ? 'buy'
@@ -128,6 +129,7 @@
                               }</div>
                               <div class='${close}'>${percentage}%</div>
                            </div>`;
+        }
       });
     };
     getData();
