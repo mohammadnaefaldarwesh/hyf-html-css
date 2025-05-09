@@ -111,11 +111,16 @@
       'alpha-finance': 0.027578,
       velo: 0.009555,
       jito: 1.4655,
+      debridge: 0.016333,
+      verasity: 0.0013333,
+      kaito: 0.94555,
+      nosana: 0.52555,
+      highstreet: 0.50555,
     };
     let finalData;
     let getData = async () => {
       let data = await fetch(
-        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
+        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,nosana,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
       );
       finalData = await data.json();
       console.log(finalData);
