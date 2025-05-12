@@ -116,11 +116,28 @@
       kaito: 0.94555,
       nosana: 0.52555,
       highstreet: 0.50555,
+      'pundi-x-2': 0.25255,
+      'xdce-crowd-sale': 0.059527,
+      'moonwell-artemis': 0.019333,
+      'aerodrome-finance': 0.43655,
+      aixbt: 0.10655,
+      'perpetual-protocol': 0.20555,
+      'pyth-network': 0.13005,
+      'aioz-network': 0.23005,
+      'simon-s-cat': 0.0000060009,
+      'zeus-network': 0.24121,
+      eos: 0.45121,
+      syrup: 0.10321,
+      kamino: 0.048321,
+      'ether-fi': 0.60321,
+      scroll: 0.27121,
+      renzo: 0.013121,
+      polkastarter: 0.18121,
     };
     let finalData;
     let getData = async () => {
       let data = await fetch(
-        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,nosana,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
+        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,simon-s-cat,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
       );
       finalData = await data.json();
       console.log(finalData);
