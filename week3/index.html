@@ -94,12 +94,12 @@
       ponke: 0.070555,
       stafi: 0.11555,
       starknet: 0.12155,
-      tensor: 0.12444,
+      tensor: 0.14444,
       'peaq-2': 0.10555,
       'heroes-of-mavia': 0.20555,
       'bio-protocol': 0.045853,
-      'tars-protocol': 0.033303,
-      'merlin-chain': 0.074555,
+      'tars-protocol': 0.045303,
+      'merlin-chain': 0.093255,
       'hifi-finance': 0.13546,
       'bella-protocol': 0.35265,
       grass: 1.3856,
@@ -133,11 +133,22 @@
       scroll: 0.27121,
       renzo: 0.013121,
       polkastarter: 0.18121,
+      'casper-network': 0.0098321,
+      'cat-in-a-dogs-world': 0.002049,
+      'puffer-finance': 0.17157,
+      iotex: 0.01543,
+      lista: 0.015011,
+      bittorrent: 0.00000061287,
+      dent: 0.00065003,
+      holotoken: 0.0009455,
+      wink: 0.00005091,
+      'terra-luna': 0.000055187,
+      'book-of-meme': 0.0012534,
     };
     let finalData;
     let getData = async () => {
       let data = await fetch(
-        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,simon-s-cat,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
+        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,dent,book-of-meme,wink,terra-luna,holotoken,bittorrent,lista,casper-network,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,simon-s-cat,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
       );
       finalData = await data.json();
       console.log(finalData);
