@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.9" />
 
     <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     <style>
+      canvas {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        max-width: 100%;
+      }
       #root {
         display: table;
         width: 100%;
@@ -150,11 +156,16 @@
       everipedia: 0.0038376,
       'amp-token': 0.0032707,
       blast: 0.0028877,
+      contentos: 0.0030007,
+      sweatcoin: 0.0036007,
+      turbo: 0.0025007,
+      'degen-base': 0.0026007,
+      'nervos-network': 0.0043207,
     };
     let finalData;
     let getData = async () => {
       let data = await fetch(
-        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,everipedia,blast,amp-token,contentos,iostoken,dent,notcoin,book-of-meme,wink,terra-luna,holotoken,bittorrent,lista,casper-network,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,simon-s-cat,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
+        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,everipedia,nervos-network,degen-base,turbo,sweatcoin,contentos,blast,amp-token,contentos,iostoken,dent,notcoin,book-of-meme,wink,terra-luna,holotoken,bittorrent,lista,casper-network,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,simon-s-cat,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
       );
       finalData = await data.json();
       console.log(finalData);
@@ -188,5 +199,97 @@
       });
     };
     getData();
+  </script>
+  <!-- <h2>HIFI Price in EUR (Last 1 Year)</h2>
+  <canvas id="priceChart" width="800" height="400"></canvas> -->
+
+  <script>
+    async function fetchPriceData() {
+      const response = await fetch(
+        'https://api.coingecko.com/api/v3/coins/hifi-finance/market_chart?vs_currency=eur&days=365',
+      );
+      const data = await response.json();
+      return data.prices; // array of [timestamp, price]
+    }
+
+    function processData(prices) {
+      const labels = [];
+      const values = [];
+      prices.forEach((item) => {
+        const date = new Date(item[0]);
+        labels.push(date.toISOString().split('T')[0]); // yyyy-mm-dd
+        values.push(item[1].toFixed(4)); // price rounded
+      });
+      return { labels, values };
+    }
+
+    async function drawChart() {
+      const prices = await fetchPriceData();
+      const { labels, values } = processData(prices);
+
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Price (EUR)',
+              data: values,
+              borderColor: 'rgb(75, 192, 192)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              tension: 0.2,
+              pointRadius: 0,
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Date',
+              },
+              ticks: {
+                maxTicksLimit: 12,
+              },
+            },
+            y: {
+              display: true,
+              title: {
+                display: true,
+                text: 'Price in EUR',
+              },
+              beginAtZero: false,
+            },
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                label: function (context) {
+                  return context.parsed.y + ' €';
+                },
+              },
+            },
+          },
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false,
+          },
+        },
+      });
+    }
+
+    // drawChart();
   </script>
 </html>
