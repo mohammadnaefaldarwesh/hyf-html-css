@@ -75,6 +75,43 @@
     </div>
   </body>
   <script>
+    const lowRiskProjects = [
+      // Enterprise Blockchains
+      'vechain', // VET (Supply chain tracking)
+      'hedera-hashgraph', // HBAR (Enterprise DLT)
+      'algorand', // ALGO (High-speed payments)
+      'oasis-network', // ROSE (Privacy-focused)
+      'conflux-token', // CFX (China-friendly blockchain)
+
+      // Ethereum Scaling (L2s)
+      'arbitrum', // ARB (Dominant L2)
+      'optimism', // OP (Major L2)
+      'immutable-x', // IMX (NFT-focused scaling)
+      'starknet', // STRK (ZK-Rollup)
+
+      // Payments & Interop
+      'stellar', // XLM (Cross-border payments)
+      'crypto-com-chain', // CRO (Crypto.com ecosystem)
+      'astar', // ASTR (Polkadot parachain)
+      'blockstack', // STX (Bitcoin smart contracts)
+
+      // DeFi & Infrastructure
+      'the-graph', // GRT (Data indexing)
+      'lido-dao', // LDO (Liquid staking)
+
+      // Gaming/NFTs
+      'enjincoin', // ENJ (Gaming NFTs)
+      'tezos', // XTZ (NFT-friendly chain)
+      'chiliz', // CHZ (Sports fan tokens)
+
+      // Established Tokens
+      'dogecoin', // DOGE (High liquidity)
+      'polymesh', // MATIC (Ethereum scaling Polygon)
+      'kava', // KAVA (Binance-backed DeFi)
+      'audius', // AUDIO (Music streaming)
+      'basic-attention-token', // BAT (Ad ecosystem)
+    ];
+
     const allNames = {
       'act-i-the-ai-prophecy': 0.046919,
       'alchemy-pay': 0.018444,
@@ -104,7 +141,7 @@
       'peaq-2': 0.10555,
       'heroes-of-mavia': 0.20555,
       'bio-protocol': 0.045853,
-      'tars-protocol': 0.045303,
+      'tars-protocol': 0.065303,
       'merlin-chain': 0.093255,
       'hifi-finance': 0.13546,
       'bella-protocol': 0.35265,
@@ -130,8 +167,7 @@
       'perpetual-protocol': 0.20555,
       'pyth-network': 0.13005,
       'aioz-network': 0.23005,
-      'simon-s-cat': 0.0000060009,
-      'zeus-network': 0.24121,
+      'zeus-network': 0.17121,
       eos: 0.45121,
       syrup: 0.10321,
       kamino: 0.048321,
@@ -140,32 +176,49 @@
       renzo: 0.013121,
       polkastarter: 0.18121,
       'casper-network': 0.0098321,
-      'cat-in-a-dogs-world': 0.002049,
       'puffer-finance': 0.17157,
       iotex: 0.01543,
       lista: 0.015011,
-      bittorrent: 0.00000061287,
-      dent: 0.00065003,
-      holotoken: 0.0009455,
-      wink: 0.00005091,
-      'terra-luna': 0.000055187,
-      'book-of-meme': 0.0012534,
-      notcoin: 0.0020201,
       iostoken: 0.0035555,
-      contentos: 0.0032864,
-      everipedia: 0.0038376,
-      'amp-token': 0.0032707,
       blast: 0.0028877,
-      contentos: 0.0030007,
-      sweatcoin: 0.0036007,
       turbo: 0.0025007,
       'degen-base': 0.0026007,
       'nervos-network': 0.0043207,
+      livepeer: 3.6666,
+      altlayer: 0.022972,
+      harmony: 0.010572,
+      'non-playable-coin': 0.0093207,
+      jasmycoin: 0.012112,
+      vechain: 0.018412,
+      'g-token': 0.012222,
+      taiko: 0.57555,
+      'gigachad-2': 0.013412,
+      michicoin: 0.024412,
+      'xai-blockchain': 0.044444,
+      'hedera-hashgraph': 0.14698,
+      'oasis-network': 0.025113,
+      'conflux-token': 0.063502,
+      arbitrum: 0.27016,
+      optimism: 0.53293,
+      'immutable-x': 0.45491,
+      stellar: 0.22151,
+      'crypto-com-chain': 0.070393,
+      astar: 0.02256,
+      blockstack: 0.61111,
+      'the-graph': 0.07681,
+      'lido-dao': 0.65858,
+      tezos: 0.4553,
+      chiliz: 0.033486,
+      dogecoin: 0.14187,
+      polymesh: 0.11303,
+      kava: 0.24806,
+      audius: 0.057761,
+      'basic-attention-token': 0.11259,
     };
     let finalData;
     let getData = async () => {
       let data = await fetch(
-        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,everipedia,nervos-network,degen-base,turbo,sweatcoin,contentos,blast,amp-token,contentos,iostoken,dent,notcoin,book-of-meme,wink,terra-luna,holotoken,bittorrent,lista,casper-network,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,simon-s-cat,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
+        'https://api.coingecko.com/api/v3/simple/price?ids=enjincoin,kava,audius,basic-attention-token,astar,dogecoin,polymesh,chiliz,tezos,the-graph,lido-dao,blockstack,stellar,crypto-com-chain,immutable-x,arbitrum,optimism,oasis-network,conflux-token,hedera-hashgraph,jasmycoin,xai-blockchain,michicoin,non-playable-coin,taiko,gigachad-2,g-token,altlayer,harmony,livepeer,nervos-network,degen-base,turbo,blast,iostoken,lista,casper-network,polkastarter,scroll,renzo,ether-fi,kamino,eos,syrup,aioz-network,pyth-network,aixbt,perpetual-protocol,aerodrome-finance,moonwell-artemis,xdce-crowd-sale,nosana,pundi-x-2,highstreet,debridge,verasity,kaito,ftx-token,dodo,alpha-finance,movement,jito,velo,safe,catizen,grass,bella-protocol,hifi-finance,merlin-chain,tars-protocol,bio-protocol,heroes-of-mavia,act-i-the-ai-prophecy,based-brett,neiro-3,algorand,starknet,cardano,particle-network,anime,vechain,tars-ai,arcblock,zeus-network,bio,merl,hifi,mavia,bel...ftx,hivemapper,mobox,lumia,cati,solana-name-service,alchemy-pay,sei,gala,epic-chain,tensor,stafi,idx,dia,osmosis,memecoin,maple-finance,peaq-2,lto-network,clearpool,xyo,api3,gmx&vs_currencies=eur',
       );
       finalData = await data.json();
       console.log(finalData);
@@ -187,7 +240,9 @@
             : '';
         if (close) {
           root.innerHTML += `<div class="row">
-                              <div class='${close}'>${element}</div>
+                              <div class='${close}'>${element}${
+            lowRiskProjects.includes(element) ? '***' : ''
+          }</div>
                               <div>${finalData[element].eur}</div>
                               <div>${allNames[element]}</div>
                               <div class="">${
