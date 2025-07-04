@@ -493,7 +493,7 @@
             y += 7;
 
             try {
-              const base64Image = await loadImageAsBase64('img/' + ex.name + '.gif');
+              const base64Image = await loadImageAsBase64('images/' + ex.name + '.gif');
               doc.addImage(base64Image, 'PNG', 15, y, 30, 30);
               y += 35;
             } catch (error) {
