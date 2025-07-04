@@ -174,7 +174,42 @@
         width: 140px; /* fixed width so buttons align vertically across rows */
         flex-shrink: 0; /* prevent shrinking */
       }
+ /* Mobile-friendly tweaks */
+      @media (max-width: 600px) {
+        .exe-sec {
+          flex-direction: column;
+          align-items: center;
+        }
 
+        .exe-sec img.exercise-gif {
+          width: 50%;
+          height: auto;
+        }
+
+        .exe-sec .buttons-container {
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        .exe-sec .exe-text {
+          width: 100%;
+          text-align: center;
+          /* // margin-bottom: 10px; */
+        }
+
+        .exercise {
+          padding: 10px;
+        }
+
+        .exercise-buttons button {
+          width: 100%;
+        }
+        select,
+        button {
+          margin: 0;
+        }
+      }
       /* Style buttons
       .change-button,
       .delete-button {
